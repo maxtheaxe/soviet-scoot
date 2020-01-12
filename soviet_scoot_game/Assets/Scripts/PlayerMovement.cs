@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /* taken from robertbu https://answers.unity.com/questions/611343/movement-2d-in-a-grid.html
  * repurposed for the game and edited into C# by Izge Bayyurt
@@ -46,5 +47,13 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if(col.gameObject.tag == "Obstacle")
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 }
