@@ -16,11 +16,13 @@ public class InfiniteScroll : MonoBehaviour
     private Vector3 nextPos; // the position to be scrolled to
 
     // Bounds for tilemap offset
-    public Vector3Int startPosition;
-    public Vector3Int startSize;
+    private RoadBuild roadBuild;
 
-    public Vector3Int endPosition;
-    public Vector3Int endSize;
+    private Vector3Int startPosition;
+    private Vector3Int startSize;
+
+    private Vector3Int endPosition;
+    private Vector3Int endSize;
 
     private BoundsInt startTileArea;
     private BoundsInt endTileArea;
@@ -31,37 +33,59 @@ public class InfiniteScroll : MonoBehaviour
     private void Start()
     {
         tr = transform;
-        nextPos = transform.position + Vector3.left;
+        nextPos = transform.position + 3 * Vector3.left;
         tilemap = GetComponent<Tilemap>();
+
+        roadBuild = GetComponent<RoadBuild>();
+
+        startPosition = roadBuild.startPosition;
+        startSize = roadBuild.startSize;
+
+        endPosition = roadBuild.endPosition;
+        endSize = roadBuild.endSize;
+
+        Debug.Log(startPosition);
+        Debug.Log(startSize);
+        Debug.Log(endPosition);
+        Debug.Log(endSize);
 
         startTileArea = new BoundsInt(startPosition, startSize);
         endTileArea = new BoundsInt(endPosition, endSize);
+
+
+
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
 
         if(scrollEnable){
 
             if (transform.position != nextPos){
+
                 transform.position = Vector3.MoveTowards(transform.position, nextPos, Time.deltaTime * scrollSpeed);
 
             } else {
 
-                nextPos += Vector3.left;
+                nextPos += 3 * Vector3.left;
 
                 // Tile offsetting
-   
+
                 tileArray = tilemap.GetTilesBlock(startTileArea);
 
+                Debug.Log(tileArray.Length);
+                Debug.Log(endTileArea);
+
+                // set the new tiles
                 tilemap.SetTilesBlock(endTileArea, tileArray);
 
-                tilemap.SetTilesBlock(startTileArea, new TileBase[5]);
+                // delete the old tiles
+                tilemap.SetTilesBlock(startTileArea, new TileBase[15]);
 
-                endPosition += Vector3Int.right;
+                endPosition += Vector3Int.right * 3;
                 endTileArea = new BoundsInt(endPosition, endSize);
 
-                startPosition += Vector3Int.right;
+                startPosition += Vector3Int.right * 3;
                 startTileArea = new BoundsInt(startPosition, startSize);
 
             }
