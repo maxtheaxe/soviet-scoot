@@ -9,7 +9,7 @@ using UnityEngine.Tilemaps;
 public class InfiniteScroll : MonoBehaviour
 {
 
-    public float scrollSpeed = 2.0f;
+    public float scrollSpeed = 4.0f;
     public bool scrollEnable;
 
     private Transform tr;
@@ -38,7 +38,7 @@ public class InfiniteScroll : MonoBehaviour
         endTileArea = new BoundsInt(endPosition, endSize);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
 
         if(scrollEnable){
