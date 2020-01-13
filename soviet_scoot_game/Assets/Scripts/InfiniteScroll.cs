@@ -44,15 +44,8 @@ public class InfiniteScroll : MonoBehaviour
         endPosition = roadBuild.endPosition;
         endSize = roadBuild.endSize;
 
-        Debug.Log(startPosition);
-        Debug.Log(startSize);
-        Debug.Log(endPosition);
-        Debug.Log(endSize);
-
         startTileArea = new BoundsInt(startPosition, startSize);
         endTileArea = new BoundsInt(endPosition, endSize);
-
-
 
     }
 
@@ -65,6 +58,12 @@ public class InfiniteScroll : MonoBehaviour
 
                 transform.position = Vector3.MoveTowards(transform.position, nextPos, Time.deltaTime * scrollSpeed);
 
+                // smoothing out the movement
+                Vector3 vectorInPixels = new Vector3(Mathf.RoundToInt(transform.position.x * 32),
+                                                     Mathf.RoundToInt(transform.position.y * 32));
+
+                transform.position = vectorInPixels / 32;
+
             } else {
 
                 nextPos += 3 * Vector3.left;
@@ -72,9 +71,6 @@ public class InfiniteScroll : MonoBehaviour
                 // Tile offsetting
 
                 tileArray = tilemap.GetTilesBlock(startTileArea);
-
-                Debug.Log(tileArray.Length);
-                Debug.Log(endTileArea);
 
                 // set the new tiles
                 tilemap.SetTilesBlock(endTileArea, tileArray);
