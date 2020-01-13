@@ -8,6 +8,7 @@ public class ObstacleSpawner : MonoBehaviour
     public GameObject obstacle1;
     public float spawnCD = 0.1f;
     public int spawnCount = 1;
+    public int xSpawnOffset = 30;
     public Tilemap tileMap;
 
     private List<Vector3> spawnPoints;
@@ -19,7 +20,7 @@ public class ObstacleSpawner : MonoBehaviour
     {
         spawnPoints = new List<Vector3>();
 
-        for(int c = tileMap.cellBounds.xMax/2; c < tileMap.cellBounds.xMax; c++)
+        for(int c = tileMap.cellBounds.xMin; c < tileMap.cellBounds.xMax; c++)
         {
             for (int r = tileMap.cellBounds.yMin; r < tileMap.cellBounds.yMax; r++)
             {
@@ -63,7 +64,7 @@ public class ObstacleSpawner : MonoBehaviour
 
             lastSpawnPointIdx = listEntry;
 
-            Instantiate(obstacle1, spawnPoints[listEntry]+ new Vector3(0, 0.5f, 0 ), Quaternion.identity);
+            Instantiate(obstacle1, spawnPoints[listEntry]+ new Vector3(xSpawnOffset, 0.5f, 0 ), Quaternion.identity);
        }
 
         spawning = false;
