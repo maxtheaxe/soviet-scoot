@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class ObstacleSpawner2 : MonoBehaviour
+public class ObstacleSpawnerGrid : MonoBehaviour
 {
 
     public TileBase obstacle;

@@ -59,10 +59,10 @@ public class InfiniteScroll : MonoBehaviour
                 transform.position = Vector3.MoveTowards(transform.position, nextPos, Time.deltaTime * scrollSpeed);
 
                 // smoothing out the movement
-                Vector3 vectorInPixels = new Vector3(Mathf.RoundToInt(transform.position.x * 32),
-                                                     Mathf.RoundToInt(transform.position.y * 32));
+                //Vector3 fixedPosition = new Vector3(Mathf.RoundToInt(unfixedPosition.x * 256),
+                //                                     Mathf.RoundToInt(unfixedPosition.y * 256));
 
-                transform.position = vectorInPixels / 32;
+                //transform.position = fixedPosition / 256;
 
             } else {
 
