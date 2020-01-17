@@ -11,8 +11,15 @@ public class GameManager : MonoBehaviour
 
     public int coins;
     public float roadSpeed;
+    public float playerSpeed;
+    public float spawnCD = 2.0f;
 
+    public float origRoadSpeed;
+    public float origPlayerSpeed;
+    public float origSpawnCD;
 
+    private bool scalingDif = false;
+    
     public static GameManager Instance
     {
         get
@@ -44,6 +51,42 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        roadSpeed = 10;
+    }
+
+    void Update()
+    {
+        if(!scalingDif)
+        {
+            StartCoroutine("ScaleDifficulty");
+        }
+    }
+
+
+
+    IEnumerator ScaleDifficulty()
+    {
+        scalingDif = true;
+        yield return new WaitForSeconds(1);
+
+        roadSpeed -= 1;
+        playerSpeed += 1;
+        spawnCD *= 0.99f;
+
+        scalingDif = false;
+    }
+
+    public void DoubleSpawnCD()
+    {
+        spawnCD *= 1.4f;
+    }
+
+    public void ResetDifficulty()
+    {
+        roadSpeed = origRoadSpeed;
+        playerSpeed = origPlayerSpeed;
+        spawnCD = origSpawnCD;
     }
 
     public int GetCoins()
@@ -74,8 +117,28 @@ public class GameManager : MonoBehaviour
     public void SetRoadSpeed(float newSpeed)
     {
         this.roadSpeed = newSpeed;
-
     }
+
+    public float GetPlayerSpeed()
+    {
+        return this.playerSpeed;
+    }
+
+    public void SetPlayerSpeed(float newSpeed)
+    {
+        this.playerSpeed = newSpeed;
+    }
+
+    public float GetSpawnCD()
+    {
+        return this.spawnCD;
+    }
+
+    public void SetSpawnCD(float newSpawnCD)
+    {
+        this.spawnCD = newSpawnCD;
+    }
+
 
 
 

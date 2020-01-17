@@ -330,7 +330,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.47850856, y: 0.03653557}
-    oldSize: {x: 1, y: 2}
+    oldSize: {x: 2, y: 4}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -507,6 +507,9 @@ MonoBehaviour:
   spawnCD: 2
   spawnCount: 1
   xSpawnOffset: 30
+  obstacleSpeed: 10
+  minSpawnCD: 0.2
+  movingObstacle: 0
   tileMap: {fileID: 1977063347}
 --- !u!4 &1525859189
 Transform:

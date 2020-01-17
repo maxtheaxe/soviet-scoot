@@ -49,10 +49,12 @@ public class InfiniteScroll : MonoBehaviour
 
 
         GameManager.Instance.SetRoadSpeed(scrollSpeed);
+        GameManager.Instance.origRoadSpeed = scrollSpeed;
     }
 
     private void Update()
     {
+        //This is probably pointless but it's there for now so watch out :)
         if(GameManager.Instance.GetRoadSpeed() != scrollSpeed)
         {
             scrollSpeed = GameManager.Instance.GetRoadSpeed();

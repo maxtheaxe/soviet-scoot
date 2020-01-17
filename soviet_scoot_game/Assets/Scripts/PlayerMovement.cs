@@ -12,10 +12,12 @@ public class PlayerMovement : MonoBehaviour
 
     public float speed = 5.0f;
     public int lanes = 5;
+    public float kickCD = 1.0f;
 
     private int currentLane;
     private Vector3 pos;
     private Transform tr;
+    private bool kickCoolingDown = false;
 
     private void Start()
     {
@@ -23,11 +25,22 @@ public class PlayerMovement : MonoBehaviour
         tr = transform;
 
         currentLane = (lanes / 2) + 1;
+
+        GameManager.Instance.origPlayerSpeed = speed;
     }
 
 
     private void Update()
     {   
+
+        if(GameManager.Instance.GetPlayerSpeed() > 5 && GameManager.Instance.GetPlayerSpeed() != speed)
+        {
+            speed = GameManager.Instance.GetPlayerSpeed();
+            if(speed >= 10.0f)
+            {
+                speed = 10.0f;
+            }
+        }
 
         if (Input.GetAxisRaw("Vertical") > 0 && tr.position == pos && currentLane < lanes) // up
         {
@@ -46,14 +59,37 @@ public class PlayerMovement : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, pos, Time.deltaTime * speed);
         }
 
+        if(Input.GetKeyDown(KeyCode.Space) && !kickCoolingDown)
+        {
+            StartCoroutine("Kick");
+        }
 
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    IEnumerator Kick()
+    {
+        kickCoolingDown = true;
+        GameManager.Instance.SetRoadSpeed(GameManager.Instance.GetRoadSpeed() + 5);
+
+        yield return new WaitForSeconds(kickCD);
+
+        kickCoolingDown = false;
+
+     
+
+
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
     {
         if(col.gameObject.tag == "Obstacle")
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            var gm = GameManager.Instance;
+            gm.SetRoadSpeed(gm.GetRoadSpeed() / 2);
+            gm.DoubleSpawnCD();
+
+            //GameManager.Instance.ResetDifficulty();
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

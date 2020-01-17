@@ -12,9 +12,8 @@ GameObject:
   - component: {fileID: 6409757580578817409}
   - component: {fileID: 8676904748852249557}
   - component: {fileID: 8602680757431513905}
-  - component: {fileID: 9187902330997544619}
   m_Layer: 0
-  m_Name: tempObstacle
+  m_Name: BarrelObstacle
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114,10 +113,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.019696057}
+  m_Offset: {x: 0.00000011920929, y: 0.12693423}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -128,18 +127,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.6629778}
+  m_Size: {x: 0.70235944, y: 0.44850147}
   m_EdgeRadius: 0
---- !u!114 &9187902330997544619
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7301559811622836296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36fb1a8a2e2df1545a57823d1ba869fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: -3

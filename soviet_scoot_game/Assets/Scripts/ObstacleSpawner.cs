@@ -11,6 +11,8 @@ public class ObstacleSpawner : MonoBehaviour
     public int spawnCount = 1;
     public int xSpawnOffset = 30;
     public float obstacleSpeed = 10;
+    public float minSpawnCD = 0.2f;
+    public bool movingObstacle = false;
     public Tilemap tileMap;
 
     private List<Vector3> spawnPoints;
@@ -20,6 +22,8 @@ public class ObstacleSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameManager.Instance.origSpawnCD = spawnCD;
+
         spawnPoints = new List<Vector3>();
 
         for(int c = tileMap.cellBounds.xMin; c < tileMap.cellBounds.xMax; c++)
@@ -37,11 +41,18 @@ public class ObstacleSpawner : MonoBehaviour
 
         }
 
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.Instance.GetSpawnCD() != spawnCD)
+        { 
+            spawnCD = spawnCD <= minSpawnCD ? minSpawnCD : GameManager.Instance.GetSpawnCD();
+        }
+
         if(!spawning)
         {
             StartCoroutine("SpawnObstacle");
@@ -66,14 +77,21 @@ public class ObstacleSpawner : MonoBehaviour
 
             lastSpawnPointIdx = listEntry;
 
-            ObstacleMove moveScript = obstacle1.GetComponent<ObstacleMove>();
-            if(moveScript != null)
+            var objInstance = Instantiate(obstacle1, spawnPoints[listEntry]+ new Vector3(xSpawnOffset, 0.5f, 0 ), Quaternion.identity);
+
+            if(!movingObstacle)
             {
-                moveScript.speed = -obstacleSpeed;
+                objInstance.transform.parent = tileMap.transform;
             }
-
-
-            Instantiate(obstacle1, spawnPoints[listEntry]+ new Vector3(xSpawnOffset, 0.5f, 0 ), Quaternion.identity);
+            else
+            {
+                ObstacleMove moveScript = obstacle1.GetComponent<ObstacleMove>();
+                if(moveScript != null)
+                {
+                    moveScript.speed = obstacleSpeed;
+                }
+            }
+            
        }
 
         spawning = false;
