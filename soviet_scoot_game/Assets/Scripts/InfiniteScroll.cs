@@ -58,6 +58,10 @@ public class InfiniteScroll : MonoBehaviour
         if(GameManager.Instance.GetRoadSpeed() != scrollSpeed)
         {
             scrollSpeed = GameManager.Instance.GetRoadSpeed();
+            if(scrollSpeed < 0)
+            {
+                scrollSpeed = 0;
+            }
         }
 
         if(scrollEnable){
