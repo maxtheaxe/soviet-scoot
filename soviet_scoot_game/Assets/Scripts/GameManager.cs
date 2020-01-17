@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
 
         roadSpeed -= 1;
         playerSpeed += 1;
-        spawnCD *= 0.99f;
+        spawnCD *= 0.95f;
 
         scalingDif = false;
     }

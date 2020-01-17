@@ -366,6 +366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   lanes: 5
+  kickCD: 0.5
 --- !u!212 &1151064320
 SpriteRenderer:
   m_ObjectHideFlags: 0
