@@ -47,10 +47,16 @@ public class InfiniteScroll : MonoBehaviour
         startTileArea = new BoundsInt(startPosition, startSize);
         endTileArea = new BoundsInt(endPosition, endSize);
 
+
+        GameManager.Instance.SetRoadSpeed(scrollSpeed);
     }
 
     private void Update()
     {
+        if(GameManager.Instance.GetRoadSpeed() != scrollSpeed)
+        {
+            scrollSpeed = GameManager.Instance.GetRoadSpeed();
+        }
 
         if(scrollEnable){
 

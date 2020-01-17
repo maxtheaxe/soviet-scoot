@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     private static GameManager instance = null;
 
     public int coins;
+    public float roadSpeed;
 
 
     public static GameManager Instance
@@ -65,6 +66,16 @@ public class GameManager : MonoBehaviour
         this.coins = newCoinCount;
     }
 
+    public float GetRoadSpeed()
+    {
+        return this.roadSpeed;
+    }
+
+    public void SetRoadSpeed(float newSpeed)
+    {
+        this.roadSpeed = newSpeed;
+
+    }
 
 
 

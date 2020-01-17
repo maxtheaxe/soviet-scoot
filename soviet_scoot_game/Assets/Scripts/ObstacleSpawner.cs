@@ -10,6 +10,7 @@ public class ObstacleSpawner : MonoBehaviour
     public float spawnCD = 0.1f;
     public int spawnCount = 1;
     public int xSpawnOffset = 30;
+    public float obstacleSpeed = 10;
     public Tilemap tileMap;
 
     private List<Vector3> spawnPoints;
@@ -64,6 +65,13 @@ public class ObstacleSpawner : MonoBehaviour
             }
 
             lastSpawnPointIdx = listEntry;
+
+            ObstacleMove moveScript = obstacle1.GetComponent<ObstacleMove>();
+            if(moveScript != null)
+            {
+                moveScript.speed = -obstacleSpeed;
+            }
+
 
             Instantiate(obstacle1, spawnPoints[listEntry]+ new Vector3(xSpawnOffset, 0.5f, 0 ), Quaternion.identity);
        }
