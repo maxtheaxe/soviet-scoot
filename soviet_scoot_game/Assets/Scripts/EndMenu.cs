@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class endmenu : MonoBehaviour
+public class EndMenu : MonoBehaviour
 {
     public void Continue()
     {
-        ;
-        SceneManager.LoadScene(0);
-        // set the right index
+        SceneManager.LoadScene("OwenTestScene");
+        // set the right name
     }
 
     public void Quit()
