@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class ObstacleSpawner : MonoBehaviour
 {
-    public GameObject obstacle1;
+    public List<GameObject> obstacleList;
     public float spawnCD = 0.1f;
     public int spawnCount = 1;
     public int xSpawnOffset = 30;
@@ -77,7 +77,9 @@ public class ObstacleSpawner : MonoBehaviour
 
             lastSpawnPointIdx = listEntry;
 
-            var objInstance = Instantiate(obstacle1, spawnPoints[listEntry]+ new Vector3(xSpawnOffset, 0.5f, 0 ), Quaternion.identity);
+            var obstacle = obstacleList[Random.Range(0, obstacleList.Count)];
+
+            var objInstance = Instantiate(obstacle, spawnPoints[listEntry]+ new Vector3(xSpawnOffset, 0.5f, 0 ), Quaternion.identity);
 
             if(!movingObstacle)
             {
@@ -85,7 +87,7 @@ public class ObstacleSpawner : MonoBehaviour
             }
             else
             {
-                ObstacleMove moveScript = obstacle1.GetComponent<ObstacleMove>();
+                ObstacleMove moveScript = obstacle.GetComponent<ObstacleMove>();
                 if(moveScript != null)
                 {
                     moveScript.speed = obstacleSpeed;
