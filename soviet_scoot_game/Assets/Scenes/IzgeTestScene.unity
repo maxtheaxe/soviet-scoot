@@ -715,7 +715,12 @@ PrefabInstance:
     - target: {fileID: 4697263065554940114, guid: 6a51c57087f6589459abd650c67376db,
         type: 3}
       propertyPath: obstacleList.Array.size
-      value: 5
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4697263065554940114, guid: 6a51c57087f6589459abd650c67376db,
+        type: 3}
+      propertyPath: coinList.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4697263065554940114, guid: 6a51c57087f6589459abd650c67376db,
         type: 3}
@@ -757,6 +762,24 @@ PrefabInstance:
       propertyPath: obstacleList.Array.data[4]
       value: 
       objectReference: {fileID: 4201626090205604111, guid: e19cb3bc7ac2947ec880c657fa8a23a2,
+        type: 3}
+    - target: {fileID: 4697263065554940114, guid: 6a51c57087f6589459abd650c67376db,
+        type: 3}
+      propertyPath: coinList.Array.data[2]
+      value: 
+      objectReference: {fileID: 4201626090205604111, guid: e19cb3bc7ac2947ec880c657fa8a23a2,
+        type: 3}
+    - target: {fileID: 4697263065554940114, guid: 6a51c57087f6589459abd650c67376db,
+        type: 3}
+      propertyPath: coinList.Array.data[0]
+      value: 
+      objectReference: {fileID: 1938842455850436891, guid: 63f95f55e87da446f903a7002ae11a6f,
+        type: 3}
+    - target: {fileID: 4697263065554940114, guid: 6a51c57087f6589459abd650c67376db,
+        type: 3}
+      propertyPath: coinList.Array.data[1]
+      value: 
+      objectReference: {fileID: 1656147001056371839, guid: 4d0f3a35e1a3e46d5afb7a1ca170e44a,
         type: 3}
     - target: {fileID: 4697263065554940115, guid: 6a51c57087f6589459abd650c67376db,
         type: 3}
