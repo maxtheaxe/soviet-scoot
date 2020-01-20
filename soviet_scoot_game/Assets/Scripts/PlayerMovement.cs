@@ -75,9 +75,6 @@ public class PlayerMovement : MonoBehaviour
 
         kickCoolingDown = false;
 
-     
-
-
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -91,5 +88,30 @@ public class PlayerMovement : MonoBehaviour
             //GameManager.Instance.ResetDifficulty();
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+
+        if (col.gameObject.tag == "Coin")
+        {
+            var gm = GameManager.Instance;
+
+            switch (col.gameObject.name)
+            {
+                case "ruble_gold":
+                    gm.AddCoins(gm.GetGoldCoinValue());
+                    break;
+                case "ruble_silver":
+                    gm.AddCoins(gm.GetSilverCoinValue());
+                    break;
+                case "ruble_bronze":
+                    gm.AddCoins(gm.GetBronzeCoinValue());
+                    break;
+            }
+
+            Destroy(col.gameObject);
+
+            //GameManager.Instance.ResetDifficulty();
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+
     }
 }

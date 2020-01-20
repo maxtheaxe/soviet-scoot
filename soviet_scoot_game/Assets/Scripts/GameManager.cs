@@ -18,6 +18,11 @@ public class GameManager : MonoBehaviour
     public float origPlayerSpeed;
     public float origSpawnCD;
 
+    public float coinSpawnRate = 0.2f; // (from 0 to 1, each coin spawned is one less obstacle spawned)
+    public int goldCoinValue = 25;
+    public int silverCoinValue = 10;
+    public int bronzeCoinValue = 5;
+
     private bool scalingDif = false;
     
     public static GameManager Instance
@@ -139,6 +144,19 @@ public class GameManager : MonoBehaviour
         this.spawnCD = newSpawnCD;
     }
 
+    public int GetGoldCoinValue(){
+        return this.goldCoinValue;
+    }
+
+    public int GetSilverCoinValue()
+    {
+        return this.silverCoinValue;
+    }
+
+    public int GetBronzeCoinValue()
+    {
+        return this.bronzeCoinValue;
+    }
 
 
 

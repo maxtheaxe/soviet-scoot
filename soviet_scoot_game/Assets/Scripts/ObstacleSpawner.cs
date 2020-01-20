@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class ObstacleSpawner : MonoBehaviour
 {
-    public List<GameObject> obstacleList;
+    public List<GameObject> obstacleList; // list for obstacles
+    public List<GameObject> coinList; // list for coins
     public float spawnCD = 0.1f;
     public int spawnCount = 1;
     public int xSpawnOffset = 30;
@@ -77,9 +78,15 @@ public class ObstacleSpawner : MonoBehaviour
 
             lastSpawnPointIdx = listEntry;
 
-            var obstacle = obstacleList[Random.Range(0, obstacleList.Count)];
+            GameObject spawnObject;
 
-            var objInstance = Instantiate(obstacle, spawnPoints[listEntry]+ new Vector3(xSpawnOffset, 0.5f, 0 ), Quaternion.identity);
+            if (Random.value < GameManager.Instance.coinSpawnRate){
+                spawnObject = coinList[Random.Range(0, coinList.Count)];
+            } else {
+                spawnObject = obstacleList[Random.Range(0, obstacleList.Count)];
+            }
+
+            var objInstance = Instantiate(spawnObject, spawnPoints[listEntry]+ new Vector3(xSpawnOffset, 0.5f, 0 ), Quaternion.identity);
 
             if(!movingObstacle)
             {
@@ -87,7 +94,7 @@ public class ObstacleSpawner : MonoBehaviour
             }
             else
             {
-                ObstacleMove moveScript = obstacle.GetComponent<ObstacleMove>();
+                ObstacleMove moveScript = spawnObject.GetComponent<ObstacleMove>();
                 if(moveScript != null)
                 {
                     moveScript.speed = obstacleSpeed;
