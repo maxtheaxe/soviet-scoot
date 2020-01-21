@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-
+    public GameObject camera;
     public float speed = 5.0f;
     public int lanes = 5;
     public float kickCD = 1.0f;
@@ -84,6 +84,9 @@ public class PlayerMovement : MonoBehaviour
             var gm = GameManager.Instance;
             gm.SetRoadSpeed(gm.GetRoadSpeed() / 2);
             gm.DoubleSpawnCD();
+
+            var shaker = camera.GetComponent<ScreenShake>();
+            shaker.TriggerShake(0.5f,0.3f,1.0f);
 
             //GameManager.Instance.ResetDifficulty();
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
