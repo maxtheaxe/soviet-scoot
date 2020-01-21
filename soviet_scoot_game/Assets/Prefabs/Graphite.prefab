@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1998190711534658503}
   - component: {fileID: 1998190711534658489}
   - component: {fileID: 4311045406805540512}
+  - component: {fileID: 6324256288744638517}
   m_Layer: 0
   m_Name: Graphite
   m_TagString: Obstacle
@@ -128,3 +129,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3508348, y: 0.2516924}
   m_EdgeRadius: 0
+--- !u!114 &6324256288744638517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998190711534658500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9208445c110bfcb489bd3774fbd96572, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrow: {fileID: 805498870888797242, guid: 1f51288c4695b4145b50bff468fc5884, type: 3}
+  player: {fileID: 5633023827034245613, guid: 2c499a332bf68c747885cee741936e61, type: 3}
+  xOffset: 17

@@ -27,7 +27,7 @@ public class ObstacleSpawner : MonoBehaviour
 
         spawnPoints = new List<Vector3>();
 
-        for(int c = tileMap.cellBounds.xMin; c < tileMap.cellBounds.xMax; c++)
+        for(int c = tileMap.cellBounds.xMax/2; c < tileMap.cellBounds.xMax; c++)
         {
             for (int r = tileMap.cellBounds.yMin; r < tileMap.cellBounds.yMax; r++)
             {
@@ -49,6 +49,11 @@ public class ObstacleSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(spawnPoints.Count == 0)
+        {
+            Debug.LogWarning("0 possible obstacle spawn points for some reason! Fix pl0x");
+        }
+
         if (GameManager.Instance.GetSpawnCD() != spawnCD)
         { 
             spawnCD = spawnCD <= minSpawnCD ? minSpawnCD : GameManager.Instance.GetSpawnCD();
@@ -86,7 +91,12 @@ public class ObstacleSpawner : MonoBehaviour
                 spawnObject = obstacleList[Random.Range(0, obstacleList.Count)];
             }
 
-            var objInstance = Instantiate(spawnObject, spawnPoints[listEntry]+ new Vector3(xSpawnOffset, 0.5f, 0 ), Quaternion.identity);
+            var objInstance = Instantiate(spawnObject, spawnPoints[listEntry] + new Vector3(xSpawnOffset, 0.5f, 0 ), Quaternion.identity);
+
+            if(objInstance.GetComponent<SpriteRenderer>().isVisible )
+            {
+                objInstance.transform.position = new Vector3(objInstance.transform.position.x + 10, objInstance.transform.position.y, 0);
+            }
 
             if(!movingObstacle)
             {
