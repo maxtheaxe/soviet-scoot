@@ -75,7 +75,9 @@ public class GameManager : MonoBehaviour
         scalingDif = true;
         yield return new WaitForSeconds(1);
 
-        roadSpeed -= 1;
+        if (roadSpeed >= 1){
+            roadSpeed -= 1;
+        }
         playerSpeed += 1;
         spawnCD *= 0.95f;
 
