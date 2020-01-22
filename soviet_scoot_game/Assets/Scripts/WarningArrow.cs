@@ -36,7 +36,7 @@ public class WarningArrow : MonoBehaviour
             seen = true;
         }
 
-        if(!sr.isVisible && created)
+        if(sr.isVisible && created)
         {
             created = false;
         }

@@ -142,6 +142,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9208445c110bfcb489bd3774fbd96572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrow: {fileID: 805498870888797242, guid: 1f51288c4695b4145b50bff468fc5884, type: 3}
+  arrow: {fileID: 487199468962131175, guid: e66e366ffc78a45309e84d0868e5e15f, type: 3}
   player: {fileID: 5633023827034245613, guid: 2c499a332bf68c747885cee741936e61, type: 3}
   xOffset: 17
