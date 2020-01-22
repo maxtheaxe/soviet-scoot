@@ -7,6 +7,7 @@ TagManager:
   - Obstacle
   - Coin
   - Building
+  - Chaser
   layers:
   - Default
   - TransparentFX

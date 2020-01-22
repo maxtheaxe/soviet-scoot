@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour
     public int silverCoinValue = 10;
     public int bronzeCoinValue = 5;
 
+    public bool justCollided = false;
+
+
     private bool scalingDif = false;
     
     public static GameManager Instance
@@ -66,6 +69,11 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine("ScaleDifficulty");
         }
+
+        if (justCollided)
+        {
+            StartCoroutine("CollidedReset");
+        }
     }
 
 
@@ -75,13 +83,27 @@ public class GameManager : MonoBehaviour
         scalingDif = true;
         yield return new WaitForSeconds(1);
 
-        if (roadSpeed >= 1){
+        if (roadSpeed > 5){
             roadSpeed -= 1;
         }
+        else if (roadSpeed < 5)
+        {
+            roadSpeed = 5;
+        }
+
         playerSpeed += 1;
         spawnCD *= 0.95f;
 
         scalingDif = false;
+    }
+
+    IEnumerator CollidedReset()
+    {
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+
+        justCollided = false;
+
     }
 
     public void DoubleSpawnCD()

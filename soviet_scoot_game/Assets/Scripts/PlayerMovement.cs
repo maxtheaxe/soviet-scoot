@@ -69,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator Kick()
     {
         kickCoolingDown = true;
-        GameManager.Instance.SetRoadSpeed(GameManager.Instance.GetRoadSpeed() + 5);
+        GameManager.Instance.SetRoadSpeed(GameManager.Instance.GetRoadSpeed() + 100/GameManager.Instance.roadSpeed);
 
         yield return new WaitForSeconds(kickCD);
 
@@ -79,7 +79,14 @@ public class PlayerMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.gameObject.tag == "Obstacle")
+
+        if(col.gameObject.tag == "Chaser")
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            print("YEET");
+        }
+
+        if (col.gameObject.tag == "Obstacle")
         {
             var gm = GameManager.Instance;
             gm.SetRoadSpeed(gm.GetRoadSpeed() / 2);
@@ -88,8 +95,7 @@ public class PlayerMovement : MonoBehaviour
             var shaker = camera.GetComponent<ScreenShake>();
             shaker.TriggerShake(0.5f,0.3f,1.0f);
 
-            //GameManager.Instance.ResetDifficulty();
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            GameManager.Instance.justCollided = true;
         }
 
         if (col.gameObject.tag == "Coin")

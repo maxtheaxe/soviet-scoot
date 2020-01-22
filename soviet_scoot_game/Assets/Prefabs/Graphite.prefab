@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1998190711534658489}
   - component: {fileID: 4311045406805540512}
   - component: {fileID: 6324256288744638517}
+  - component: {fileID: 5941014905624376629}
   m_Layer: 0
   m_Name: Graphite
   m_TagString: Obstacle
@@ -144,3 +145,24 @@ MonoBehaviour:
   arrow: {fileID: 487199468962131175, guid: e66e366ffc78a45309e84d0868e5e15f, type: 3}
   player: {fileID: 5633023827034245613, guid: 2c499a332bf68c747885cee741936e61, type: 3}
   xOffset: 17
+--- !u!50 &5941014905624376629
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998190711534658500}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
