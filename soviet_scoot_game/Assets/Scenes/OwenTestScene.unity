@@ -40019,6 +40019,31 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 700872518}
+    - target: {fileID: 5634981775533330012, guid: ce32d6bb917ae024a982909ec514da65,
+        type: 3}
+      propertyPath: maxDistance
+      value: 12000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634981775533330012, guid: ce32d6bb917ae024a982909ec514da65,
+        type: 3}
+      propertyPath: distance
+      value: 9000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634981775533330012, guid: ce32d6bb917ae024a982909ec514da65,
+        type: 3}
+      propertyPath: threshold0
+      value: 9000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634981775533330012, guid: ce32d6bb917ae024a982909ec514da65,
+        type: 3}
+      propertyPath: threshold1
+      value: 7000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634981775533330012, guid: ce32d6bb917ae024a982909ec514da65,
+        type: 3}
+      propertyPath: threshold2
+      value: 5000
+      objectReference: {fileID: 0}
     - target: {fileID: 6672643411882641839, guid: ce32d6bb917ae024a982909ec514da65,
         type: 3}
       propertyPath: player
