@@ -27,7 +27,7 @@ public class ObstacleSpawner : MonoBehaviour
 
         spawnPoints = new List<Vector3>();
 
-        for(int c = tileMap.cellBounds.xMax/2; c < tileMap.cellBounds.xMax; c++)
+        for(int c = tileMap.cellBounds.xMax * 3/4; c < tileMap.cellBounds.xMax; c++)
         {
             for (int r = tileMap.cellBounds.yMin; r < tileMap.cellBounds.yMax; r++)
             {

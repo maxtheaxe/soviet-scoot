@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5af0ff0e6e89047d8b9cfaf52388bc11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 0}
   speed: 5
   lanes: 5
   kickCD: 0.5
