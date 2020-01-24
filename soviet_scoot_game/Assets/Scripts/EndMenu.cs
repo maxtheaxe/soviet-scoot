@@ -19,6 +19,12 @@ public class EndMenu : MonoBehaviour
         // set the right name
     }
 
+    public void ToMainMenu()
+    {
+        SceneManager.LoadScene("mainscreen");
+        // set the right name
+    }
+
     public void Quit()
     {
         Application.Quit();
