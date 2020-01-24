@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public int lanes = 5;
     public float kickCD = 1.0f;
 
+
     private int currentLane;
     private Vector3 pos;
     private Transform tr;
@@ -79,16 +80,15 @@ public class PlayerMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
+        var gm = GameManager.Instance;
 
         if(col.gameObject.tag == "Chaser")
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            print("YEET");
+            gm.caught = true;
         }
-
+        
         if (col.gameObject.tag == "Obstacle")
         {
-            var gm = GameManager.Instance;
             gm.SetRoadSpeed(gm.GetRoadSpeed() / 2);
             gm.DoubleSpawnCD();
 
@@ -98,29 +98,28 @@ public class PlayerMovement : MonoBehaviour
             GameManager.Instance.justCollided = true;
         }
 
-        if (col.gameObject.tag == "Coin")
+        if (col.gameObject.tag.Substring(0, 4) == "Coin")
         {
-            var gm = GameManager.Instance;
-
-            switch (col.gameObject.name)
+            switch (col.gameObject.tag)
             {
-                case "ruble_gold":
+                case "Coin_g":
                     gm.AddCoins(gm.GetGoldCoinValue());
                     break;
-                case "ruble_silver":
+                case "Coin_s":
                     gm.AddCoins(gm.GetSilverCoinValue());
                     break;
-                case "ruble_bronze":
+                case "Coin_b":
                     gm.AddCoins(gm.GetBronzeCoinValue());
                     break;
             }
 
             Destroy(col.gameObject);
 
+        }
             //GameManager.Instance.ResetDifficulty();
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
-
-    }
 }
+
+

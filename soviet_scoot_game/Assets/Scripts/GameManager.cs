@@ -14,16 +14,23 @@ public class GameManager : MonoBehaviour
     public float playerSpeed;
     public float spawnCD = 2.0f;
 
+    public float winDistance = 500f;
+    public int winCoins = 100;
+
     public float origRoadSpeed;
     public float origPlayerSpeed;
     public float origSpawnCD;
+
 
     public float coinSpawnRate = 0.2f; // (from 0 to 1, each coin spawned is one less obstacle spawned)
     public int goldCoinValue = 25;
     public int silverCoinValue = 10;
     public int bronzeCoinValue = 5;
+    public float coinLossRate = 0.80f; //multiplied by current coin count when caught
+    public int minCoinCount = 10; //Coin count at which if under or equal and caught, you will lose
 
     public bool justCollided = false;
+    public bool caught = false;
 
 
     private bool scalingDif = false;

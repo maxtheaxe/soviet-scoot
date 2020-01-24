@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RandomTrashScene.unity
     guid: d128262257d8942469e6e9def3e0bfeb
+  - enabled: 1
+    path: Assets/Scenes/EndScreen.unity
+    guid: 0f0a5c1d8b26e4ed1a579ca50a3c127e
+  - enabled: 1
+    path: Assets/Scenes/mainscreen.unity
+    guid: 08ebd4112eb3b4985bece473209d8909
   m_configObjects: {}

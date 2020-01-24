@@ -8,6 +8,9 @@ TagManager:
   - Coin
   - Building
   - Chaser
+  - Coin_b
+  - Coin_s
+  - Coin_g
   layers:
   - Default
   - TransparentFX
