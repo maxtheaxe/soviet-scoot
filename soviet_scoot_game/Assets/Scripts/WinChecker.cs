@@ -22,6 +22,8 @@ public class WinChecker : MonoBehaviour
     {
         if(gm.caught) //if you get caught
         {
+            gm.ResetDifficulty();
+
             gm.SetCoins((int)(gm.GetCoins() * gm.coinLossRate));
             gm.caught = false;
 
@@ -38,19 +40,20 @@ public class WinChecker : MonoBehaviour
         }
         else if (Mathf.Abs(road.transform.position.x) > gm.winDistance) //if you're not caught and reach end distance
         {
+            gm.ResetDifficulty();
+
             if (gm.GetCoins() >= gm.winCoins)
             {
                 //Load the Win screen win condition
                 //For now just loads the main menu
-                SceneManager.LoadScene(4);
+                SceneManager.LoadScene(5);
 
             }
             else
             {
                 // You done have enough coins, restart scene?
-                // For now just restarts with nothing in the middle, potentially goes to caught screen or w/e
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
+                // For now just goes to the caught screen, potentially goes to caught screen or w/e
+                SceneManager.LoadScene(3);
             }
         }
     }

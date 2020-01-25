@@ -29,7 +29,7 @@ public class ChaseyBoyVisuals : MonoBehaviour
 
     public void FirstMove()
     {
-        var tarPos = new Vector3(chaseArrow.transform.position.x - 2, chaseArrow.transform.position.y, 0);
+        var tarPos = new Vector3(chaseArrow.transform.position.x - 0.5f, chaseArrow.transform.position.y, 0);
 
         transform.position = Vector3.MoveTowards(transform.position, tarPos, Time.deltaTime * 2);
     }

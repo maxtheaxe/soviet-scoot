@@ -57,6 +57,8 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+
+
         if (instance == null)
         {
             instance = this;
@@ -68,6 +70,11 @@ public class GameManager : MonoBehaviour
         }
 
         roadSpeed = 10;
+
+
+        origRoadSpeed = roadSpeed;
+        origSpawnCD = spawnCD;
+        origPlayerSpeed = 5;
     }
 
     void Update()
