@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public float playerSpeed;
     public float spawnCD = 2.0f;
 
-    public float winDistance = 500f;
+    public float winDistance = 10000f;
     public int winCoins = 100;
 
     public float origRoadSpeed;

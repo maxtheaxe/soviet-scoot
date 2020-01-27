@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
    public void Playgame()
     {
-        SceneManager.LoadScene("IzgeTestScene");
+        SceneManager.LoadScene(1);
     }
 
     public void ShowRule()
