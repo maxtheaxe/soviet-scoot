@@ -34,7 +34,7 @@ public class ObstacleSpawner : MonoBehaviour
                 Vector3Int localPoint = new Vector3Int(c, r, (int)tileMap.transform.position.y);
                 Vector3 point = tileMap.CellToWorld(localPoint);
 
-                if(tileMap.HasTile(localPoint))
+                //if(tileMap.HasTile(localPoint))
                 {
                     spawnPoints.Add(point);
                 }
@@ -91,7 +91,18 @@ public class ObstacleSpawner : MonoBehaviour
                 spawnObject = obstacleList[Random.Range(0, obstacleList.Count)];
             }
 
-            var objInstance = Instantiate(spawnObject, spawnPoints[listEntry] + new Vector3(xSpawnOffset, 0.5f, 0 ), Quaternion.identity);
+            GameObject objInstance;
+
+            if(spawnObject.tag.Contains("Coin"))
+            {
+                objInstance = Instantiate(spawnObject, spawnPoints[listEntry] + new Vector3(xSpawnOffset, 1f, 0), Quaternion.identity);
+                //objInstance.GetComponent<Rigidbody2D>().velocity = new Vector3(GameManager.Instance.GetRoadSpeed() * 0.75f, 0, 0);
+            }
+            else
+            {
+                objInstance = Instantiate(spawnObject, spawnPoints[listEntry] + new Vector3(xSpawnOffset, 0.5f, 0), Quaternion.identity);
+
+            }
 
             if(objInstance.GetComponent<SpriteRenderer>().isVisible )
             {

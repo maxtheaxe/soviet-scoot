@@ -27,7 +27,7 @@ public class WarningArrow : MonoBehaviour
         if(!seen && !sr.isVisible && !created)
         {
             created = true;
-            arrowRef = Instantiate(arrow, new Vector3(player.transform.position.x + xOffset, transform.position.y, 0), Quaternion.identity);
+            arrowRef = Instantiate(arrow, new Vector3(player.transform.position.x + xOffset, transform.position.y+.3f, 0), Quaternion.identity);
             Destroy(arrowRef, 5.0f);
         }
 

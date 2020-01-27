@@ -25,6 +25,9 @@ public class ChaseyBoyVisuals : MonoBehaviour
         var tarPos = new Vector3(chaseArrow.transform.position.x - 10, chaseArrow.transform.position.y, 0);
 
         transform.position = Vector3.MoveTowards(transform.position, tarPos, Time.deltaTime * 5);
+
+        chaseArrow.GetComponent<SpriteRenderer>().enabled = true;
+
     }
 
     public void FirstMove()
@@ -32,11 +35,14 @@ public class ChaseyBoyVisuals : MonoBehaviour
         var tarPos = new Vector3(chaseArrow.transform.position.x - 0.5f, chaseArrow.transform.position.y, 0);
 
         transform.position = Vector3.MoveTowards(transform.position, tarPos, Time.deltaTime * 2);
+
+        chaseArrow.GetComponent<SpriteRenderer>().enabled = false;
     }
 
     public void SecondMove()
     {
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, Time.deltaTime * 2);
+
     }
 
 }

@@ -25,6 +25,7 @@ public class WinChecker : MonoBehaviour
             gm.ResetDifficulty();
 
             gm.SetCoins((int)(gm.GetCoins() * gm.coinLossRate));
+
             gm.caught = false;
 
             if (gm.GetCoins() < gm.minCoinCount)

@@ -45,13 +45,13 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetAxisRaw("Vertical") > 0 && tr.position == pos && currentLane < lanes) // up
         {
-            pos += Vector3.up;
+            pos += Vector3.up + Vector3.up/2;
             currentLane += 1;
 
         }
         else if (Input.GetAxisRaw("Vertical") < 0 && tr.position == pos && currentLane > 1) // down
         {
-            pos += Vector3.down;
+            pos += Vector3.down + Vector3.down/2;
             currentLane -= 1;
         }
 
