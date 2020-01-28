@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     public int lanes = 5;
     public float kickCD = 1.0f;
 
+    public AudioClip coinAudioClip;
+
 
     private int currentLane;
     private Vector3 pos;
@@ -104,12 +106,15 @@ public class PlayerMovement : MonoBehaviour
             {
                 case "Coin_g":
                     gm.AddCoins(gm.GetGoldCoinValue());
+                    AudioSource.PlayClipAtPoint(coinAudioClip, transform.position);
                     break;
                 case "Coin_s":
                     gm.AddCoins(gm.GetSilverCoinValue());
+                    AudioSource.PlayClipAtPoint(coinAudioClip, transform.position);
                     break;
                 case "Coin_b":
                     gm.AddCoins(gm.GetBronzeCoinValue());
+                    AudioSource.PlayClipAtPoint(coinAudioClip, transform.position);
                     break;
             }
 

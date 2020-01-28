@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class CoinAudio : MonoBehaviour
 {
-    private AudioSource audio;
+    private AudioClip audioClip;
 
     // Start is called before the first frame update
     void Start()
     {
-        audio = GetComponent<AudioSource>();
+        audioClip = GetComponent<AudioSource>().clip;
     }
 
     // Update is called once per frame
@@ -23,7 +24,8 @@ public class CoinAudio : MonoBehaviour
         if(col.gameObject.tag == "Player")
         {
             print("YEETED A COIN");
-            audio.Play();
+            AudioSource.PlayClipAtPoint(audioClip, transform.position);
+            //audio.Play();
         }
     }
 
