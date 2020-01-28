@@ -53,11 +53,13 @@ public class GameManager : MonoBehaviour
             }
             return instance;
         }
+
     }
 
     void Awake()
     {
 
+        this.coins = PlayerPrefs.GetInt("Coins", 0);
 
         if (instance == null)
         {
@@ -140,16 +142,19 @@ public class GameManager : MonoBehaviour
     public void AddCoins()
     {
         this.coins++;
+        PlayerPrefs.SetInt("Coins", this.coins);
     }
 
     public void AddCoins(int coinCount)
     {
         this.coins += coinCount;
+        PlayerPrefs.SetInt("Coins", this.coins);
     }
 
     public void SetCoins(int newCoinCount)
     {
         this.coins = newCoinCount;
+        PlayerPrefs.SetInt("Coins", this.coins);
     }
 
     public float GetRoadSpeed()
