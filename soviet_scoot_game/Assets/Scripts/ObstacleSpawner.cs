@@ -12,7 +12,7 @@ public class ObstacleSpawner : MonoBehaviour
     public int spawnCount = 1;
     public int xSpawnOffset = 30;
     public float obstacleSpeed = 10;
-    public float minSpawnCD = 0.2f;
+    public float minSpawnCD = 0.4f;
     public bool movingObstacle = false;
     public Tilemap tileMap;
 
@@ -95,7 +95,7 @@ public class ObstacleSpawner : MonoBehaviour
 
             if(spawnObject.tag.Contains("Coin"))
             {
-                objInstance = Instantiate(spawnObject, spawnPoints[listEntry] + new Vector3(xSpawnOffset, 1f, 0), Quaternion.identity);
+                objInstance = Instantiate(spawnObject, spawnPoints[listEntry] + new Vector3(xSpawnOffset, 0.5f, 0), Quaternion.identity);
                 //objInstance.GetComponent<Rigidbody2D>().velocity = new Vector3(GameManager.Instance.GetRoadSpeed() * 0.75f, 0, 0);
             }
             else

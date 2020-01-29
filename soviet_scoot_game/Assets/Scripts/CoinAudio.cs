@@ -23,7 +23,6 @@ public class CoinAudio : MonoBehaviour
     {
         if(col.gameObject.tag == "Player")
         {
-            print("YEETED A COIN");
             AudioSource.PlayClipAtPoint(audioClip, transform.position);
             //audio.Play();
         }

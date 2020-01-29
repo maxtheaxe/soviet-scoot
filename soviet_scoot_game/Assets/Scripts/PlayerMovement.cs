@@ -50,13 +50,13 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetAxisRaw("Vertical") > 0 && tr.position == pos && currentLane < lanes) // up
         {
-            pos += Vector3.up + Vector3.up/2;
+            pos += Vector3.up; // + Vector3.up/2;
             currentLane += 1;
 
         }
         else if (Input.GetAxisRaw("Vertical") < 0 && tr.position == pos && currentLane > 1) // down
         {
-            pos += Vector3.down + Vector3.down/2;
+            pos += Vector3.down;// + Vector3.down/2;
             currentLane -= 1;
         }
 
@@ -75,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator Kick()
     {
         kickCoolingDown = true;
-        GameManager.Instance.SetRoadSpeed(GameManager.Instance.GetRoadSpeed() + 100/GameManager.Instance.roadSpeed);
+        GameManager.Instance.SetRoadSpeed(GameManager.Instance.GetRoadSpeed() + 110/GameManager.Instance.roadSpeed);
 
         animator.SetTrigger("Kick");
 
@@ -89,7 +89,6 @@ public class PlayerMovement : MonoBehaviour
     {
         StopCoroutine("Kick");
         kickCoolingDown = true;
-        print("YEET");
 
         yield return new WaitForSeconds(collisionKickDelay);
 
