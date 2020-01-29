@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 5.0f;
     public int lanes = 5;
     public float kickCD = 1.0f;
+    public float collisionKickDelay = 3.0f;
 
     public AudioClip coinAudioClip;
 
@@ -20,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private int currentLane;
     private Vector3 pos;
     private Transform tr;
+    private Animator animator;
     private bool kickCoolingDown = false;
 
     private void Start()
@@ -30,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
         currentLane = (lanes / 2) + 1;
 
         GameManager.Instance.origPlayerSpeed = speed;
+        animator = gameObject.GetComponent<Animator>();
     }
 
 
@@ -74,10 +77,23 @@ public class PlayerMovement : MonoBehaviour
         kickCoolingDown = true;
         GameManager.Instance.SetRoadSpeed(GameManager.Instance.GetRoadSpeed() + 100/GameManager.Instance.roadSpeed);
 
+        animator.SetTrigger("Kick");
+
         yield return new WaitForSeconds(kickCD);
 
         kickCoolingDown = false;
 
+    }
+
+    IEnumerator CollisionKickDelay()
+    {
+        StopCoroutine("Kick");
+        kickCoolingDown = true;
+        print("YEET");
+
+        yield return new WaitForSeconds(collisionKickDelay);
+
+        kickCoolingDown = false;
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -98,6 +114,9 @@ public class PlayerMovement : MonoBehaviour
             shaker.TriggerShake(0.5f,0.3f,1.0f);
 
             GameManager.Instance.justCollided = true;
+
+            StopCoroutine("CollisionKickDelay");
+            StartCoroutine("CollisionKickDelay");
         }
 
         if (col.gameObject.tag.Substring(0, 4) == "Coin")
