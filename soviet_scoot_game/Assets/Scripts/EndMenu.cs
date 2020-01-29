@@ -15,7 +15,7 @@ public class EndMenu : MonoBehaviour
     public void Continue()
     {
         gm.SetCoins(gm.GetCoins() - gm.minCoinCount);
-        SceneManager.LoadScene("OwenTestScene");
+        SceneManager.LoadScene(1);
         // set the right name
     }
 
