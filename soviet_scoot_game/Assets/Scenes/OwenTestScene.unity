@@ -7046,7 +7046,7 @@ PrefabInstance:
         type: 3}
       propertyPath: coinAudioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 46412a0461d1a7247a2823a288361359, type: 3}
+      objectReference: {fileID: 8300000, guid: 9e73ae37d0214d8409c93027f0a334ca, type: 3}
     - target: {fileID: 5633023827034245602, guid: 2c499a332bf68c747885cee741936e61,
         type: 3}
       propertyPath: collisionKickDelay
