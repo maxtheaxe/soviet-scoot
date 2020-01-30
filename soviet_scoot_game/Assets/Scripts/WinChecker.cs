@@ -28,6 +28,11 @@ public class WinChecker : MonoBehaviour
 
             gm.caught = false;
 
+            if(gm.GetHighScore() < gm.GetCoins() * gm.GetDistanceComplete()){
+                gm.SetHighScore(gm.GetCoins() * gm.GetDistanceComplete());
+            }
+
+
             if (gm.GetCoins() < gm.minCoinCount)
             {
                 SceneManager.LoadScene(3); //End/lose screen index, lose condition
