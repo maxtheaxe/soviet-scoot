@@ -14,6 +14,7 @@ public class EndMenu : MonoBehaviour
     }
     public void Continue()
     {
+        GameManager.Instance.ResetDifficulty();
         gm.SetCoins(gm.GetCoins() - gm.minCoinCount);
         SceneManager.LoadScene(1);
         // set the right name
@@ -21,6 +22,7 @@ public class EndMenu : MonoBehaviour
 
     public void ToMainMenu()
     {
+        GameManager.Instance.ResetDifficulty();
         SceneManager.LoadScene("mainscreen");
         // set the right name
     }
