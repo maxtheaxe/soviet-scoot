@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
 
 
         origRoadSpeed = roadSpeed;
-        origSpawnCD = spawnCD;
+        origSpawnCD = 2.0f;
         origPlayerSpeed = 5;
     }
 
