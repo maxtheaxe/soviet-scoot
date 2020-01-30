@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public float origPlayerSpeed;
     public float origSpawnCD;
 
+    public int highScore;
 
     public float coinSpawnRate = 0.2f; // (from 0 to 1, each coin spawned is one less obstacle spawned)
     public int goldCoinValue = 25;
@@ -59,7 +60,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
 
-        this.coins = PlayerPrefs.GetInt("Coins", 0);
+        this.highScore = PlayerPrefs.GetInt("HighScore", 0);
 
         if (instance == null)
         {
@@ -142,19 +143,16 @@ public class GameManager : MonoBehaviour
     public void AddCoins()
     {
         this.coins++;
-        PlayerPrefs.SetInt("Coins", this.coins);
     }
 
     public void AddCoins(int coinCount)
     {
         this.coins += coinCount;
-        PlayerPrefs.SetInt("Coins", this.coins);
     }
 
     public void SetCoins(int newCoinCount)
     {
         this.coins = newCoinCount;
-        PlayerPrefs.SetInt("Coins", this.coins);
     }
 
     public float GetRoadSpeed()
@@ -201,6 +199,15 @@ public class GameManager : MonoBehaviour
         return this.bronzeCoinValue;
     }
 
+    public int GetHighScore()
+    {
+        return this.highScore;
+    }
 
+    public void SetHighScore(int newHighScore)
+    {
+        this.highScore = newHighScore;
+        PlayerPrefs.SetInt("HighScore", newHighScore);
+    }
 
 }
