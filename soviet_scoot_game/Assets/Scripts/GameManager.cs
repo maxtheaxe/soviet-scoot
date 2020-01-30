@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     public int goldCoinValue = 25;
     public int silverCoinValue = 10;
     public int bronzeCoinValue = 5;
-    public float coinLossRate = 0.80f; //multiplied by current coin count when caught
+    public float coinLossRate = 1.0f; //multiplied by current coin count when caught
     public int minCoinCount = 50; //Coin count at which if under or equal and caught, you will lose
 
     public bool justCollided = false;
