@@ -30,7 +30,6 @@ public class WinChecker : MonoBehaviour
 
             if (gm.GetCoins() < gm.minCoinCount)
             {
-                gm.SetCoins(0);
                 SceneManager.LoadScene(3); //End/lose screen index, lose condition
             }
             else
