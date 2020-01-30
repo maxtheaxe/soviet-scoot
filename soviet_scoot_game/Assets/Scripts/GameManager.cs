@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public float origSpawnCD;
 
     public int highScore;
+    public int distanceComplete;
 
     public float coinSpawnRate = 0.2f; // (from 0 to 1, each coin spawned is one less obstacle spawned)
     public int goldCoinValue = 25;
@@ -208,6 +209,16 @@ public class GameManager : MonoBehaviour
     {
         this.highScore = newHighScore;
         PlayerPrefs.SetInt("HighScore", newHighScore);
+    }
+
+    public int GetDistanceComplete()
+    {
+        return this.distanceComplete;
+    }
+
+    public void SetDistanceComplete(int distance)
+    {
+        this.distanceComplete = distance;
     }
 
 }
