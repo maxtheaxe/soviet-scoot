@@ -7,6 +7,7 @@ using TMPro;
 public class DisplayDistance : MonoBehaviour
 {
     public Tilemap road;
+    public int distanceLeft;
 
     private TextMeshProUGUI tm;
     private GameManager gm;
@@ -21,8 +22,9 @@ public class DisplayDistance : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int distance = (int)(gm.winDistance + road.transform.position.x); //road transform position is negative, hence the addition.
+        distanceLeft = (int)(gm.winDistance + road.transform.position.x); //road transform position is negative, hence the addition.
+        gm.SetDistanceComplete((int) -road.transform.position.x);
 
-        tm.text = "End in: " + distance + " units";
+        tm.text = "End in: " + distanceLeft + " units";
     }
 }

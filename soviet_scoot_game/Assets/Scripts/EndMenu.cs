@@ -22,13 +22,14 @@ public class EndMenu : MonoBehaviour
 
     public void ToMainMenu()
     {
-        GameManager.Instance.ResetDifficulty();
+        gm.SetCoins(0);
         SceneManager.LoadScene("mainscreen");
         // set the right name
     }
 
     public void Quit()
     {
+        gm.SetCoins(0);
         Application.Quit();
     }
 }
